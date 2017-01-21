@@ -19,9 +19,9 @@ Next , we remove punctuations of the words in word-list by stripping from the wo
 According to the documentation there are two ways to create RDDs: parallelizing an existing collection in your driver program, or referencing a dataset in an external storage system
 
 We used the parallelizing method to convert our cleaned list to an RDD.
-
-```sc.parallelize(rddname)```
-
+```
+sc.parallelize(rddname)
+```
 #### Convert to LabeledPoint :
 
 In order to proceed with training , the Naive Bayes , Logistic Regression and Decision tree models take LabeledPoint data as input to preform classification. Therefore we define a function  "def Convert_to_LabeledPoint(labels,features) ".
@@ -84,11 +84,17 @@ According to the documentation the classifiaction algorithms take an RDD of Labe
 Therefore ,we use the cleaned and shuffled dataset and convert it to an RDD by using sc.parallelize. The RDD is then converted to a LabeledPoint format by using the Convert_to_LabeledPoint() function defined before. Now we have the right format to train our data. spark.mllib provides convenient APIs to train with .
 
 #### Train a naive Bayes model.
-```model = NaiveBayes.train(training)```
+```
+model = NaiveBayes.train(training)
+```
 #### Train with a Logistic Regression model.
-```model = LogisticRegressionWithLBFGS.train(parsedData)```
+```
+model = LogisticRegressionWithLBFGS.train(parsedData)
+```
 #### Train with a Decision Tree model.
-```model = DecisionTree.trainClassifier(trainingData, numClasses=2, categoricalFeaturesInfo={}, impurity='gini', maxDepth=5, maxBins=32)```
+```
+model = DecisionTree.trainClassifier(trainingData, numClasses=2, categoricalFeaturesInfo={}, impurity='gini', maxDepth=5, maxBins=32)
+```
  
 #### FEATURE SPACE :   
 
